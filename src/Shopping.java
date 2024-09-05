@@ -21,12 +21,27 @@ public class Shopping {
 
             if (actionNumber == 1) {
                 if (productCount < 8) {
-                    System.out.println("Введите название товара для добавленяи в список:");
-                    String product = scanner.next();//добавить товар
+                    boolean isDuplicate = false;
 
-                    shoppingList[productCount] = product;
-                    System.out.println("Товар " + product + " добавлен в список под номером " + (productCount + 1));
-                    productCount++;
+                    System.out.println("Введите название товара для добавленяи в список:");
+                    String product = scanner.next();
+
+                    // проверка на дубликаты
+                    for (int i = 0; i < shoppingList.length; i++) {
+                        if (product.equals(shoppingList[i])) {
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
+
+                    if (!isDuplicate) {
+                        shoppingList[productCount] = product;
+                        System.out.println("Товар " + product + " добавлен в список под номером " + (productCount + 1));
+                        productCount++;
+                    } else {
+                        System.out.println("Данный товар уже есть в списке покупок.");
+                    }
+
                 } else {
                     System.out.println("Список товаров переполнен!");
                 }
@@ -43,11 +58,13 @@ public class Shopping {
                 } else {
                     System.out.println("Список товаров пуст. Добавьте товары в список.");
                 }
+
             } else if (actionNumber == 3) {
                 for (int i = 0; i < shoppingList.length; i++) {
                     shoppingList[i] = null;
                 }
                 System.out.println("Список товаров очищен.");
+
             } else if (actionNumber == 4) {
                 break;
             } else {
