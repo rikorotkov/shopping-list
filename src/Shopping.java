@@ -63,12 +63,8 @@ public class Shopping {
                 System.out.println("Список товаров:");
 
                 if (productCount != 0) {
-                    for (int i = 0; i < shoppingList.length; i++) {
-                        if (shoppingList[i] == null) {
-                            break;
-                        } else {
-                            System.out.println((i + 1) + ". " + shoppingList[i]);
-                        }
+                    for (int i = 0; i < productCount; i++) {
+                        System.out.println((i + 1) + ". " + shoppingList[i]);
                     }
                 } else {
                     System.out.println("Список товаров пуст. Добавьте товары в список.");
